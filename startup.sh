@@ -1,6 +1,5 @@
-#!/bin/bash
 
-# Fungsi untuk menampilkan pesan dengan warna
+# Fungsi menampilkan pesan dengan warna
 print_message() {
   local color=$1
   local message=$2
@@ -13,7 +12,7 @@ print_message() {
   esac
 }
 
-# Fungsi untuk memeriksa file bot
+# Fungsi memeriksa file bot
 check_bot_file() {
   if [ ! -f "$BOT_FILE" ]; then
     print_message red "[❌] File bot ($BOT_FILE) tidak ditemukan!"
@@ -55,7 +54,6 @@ EOT
   fi
 }
 
-# Fungsi untuk memeriksa dependensi
 check_dependencies() {
   if [ ! -f "requirements.txt" ]; then
     print_message yellow "[⚠️] File requirements.txt tidak ditemukan!"
@@ -74,22 +72,17 @@ check_dependencies() {
   fi
 }
 
-# Fungsi utama
 main() {
   print_message blue "======================================"
   print_message blue " Discord Bot Python - Interactive Setup "
   print_message blue "======================================"
 
-  # Periksa file bot
   check_bot_file
 
-  # Periksa dan install dependensi
   check_dependencies
 
-  # Jalankan bot
   print_message green "[🚀] Menjalankan bot Discord..."
   python3 $BOT_FILE
 }
 
-# Jalankan fungsi utama
 main
